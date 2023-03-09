@@ -48,12 +48,13 @@ function same(a, b) {
             return false;
         }
 
-        let isInclude = b.includes(e*e);
-        if (!isInclude) {
+        let index = b.indexOf(e*e);
+        if (index === -1) {
             result = false;
             return false;
         }
 
+        b.splice(index, 1);
     }
 
     return result;
@@ -62,8 +63,17 @@ function same(a, b) {
 let a = [1,2,3]
 let b = [4,9,1]
 
+let c = [1,2,3]
+let d = [1,9]
+
+let e = [1,2,1]
+let f = [4,4,1]
 
 
-console.log("same result : " + same(a,b));
+console.log("array a, b - same result : " + same(a,b));
+console.log("array c, d - same result : " + same(c,d));
+console.log("array e, f - same result : " + same(e,f));
+
+
 
 
