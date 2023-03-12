@@ -31,7 +31,11 @@ function CountUniqueValues(arr) {
     let i = 0;
     let j = i+1;
 
-    let result = 1;
+    let result = 0;
+
+    if (arr.length > 0) {
+        result++;
+    }
 
     while (j < arr.length) {
 
@@ -51,9 +55,11 @@ let array1 = [1,1,1,1,1,2];
 let array2 = [1,2,3,4,4,4,7,7,12,12,13];
 let array3 = [];
 let array4 = [-2,-1,-1,0,1];
+let array5 = [1,1,1,2,3,3,4,4,5,6];
 
 
 console.log("CountUniqueValues : " + CountUniqueValues(array1));
 console.log("CountUniqueValues : " + CountUniqueValues(array2));
 console.log("CountUniqueValues : " + CountUniqueValues(array3));
 console.log("CountUniqueValues : " + CountUniqueValues(array4));
+console.log("CountUniqueValues : " + CountUniqueValues(array5));
