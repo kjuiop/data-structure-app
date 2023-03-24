@@ -10,7 +10,9 @@
 /**
  * **Frequency Counter / Multiple Pointers - areThereDuplicates**
  *
- * Implement a function called, **areThereDuplicates** which accepts a **variable number of arguments,** and **checks whether there are any duplicates among the arguments passed in.  You can solve this using the frequency counter pattern OR the multiple pointers pattern.
+ * Implement a function called, areThereDuplicates which accepts a variable number of arguments,
+ * and checks whether there are any duplicates among the arguments passed in.
+ * You can solve this using the frequency counter pattern OR the multiple pointers pattern.
  *
  * Examples:
  *
@@ -27,9 +29,31 @@
  * Space - O(1)
  */
 
-function areThereDuplicates() {
+function areThereDuplicates(arr) {
 
+    if (arr.length === 0) {
+        return 0;
+    }
+
+    let frequency = {}
+    for (let val in arr) {
+        frequency[arr[val]] = (frequency[arr[val]] || 0) + 1
+    }
+    for (let val in frequency) {
+        if (frequency[val] > 1) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
+let array1 = [1,2,3];
+let array2 = [1,2,2];
+let array3 = [2,3,3,4];
+let array4 = ["a", "b", "c", "a"];
 
-
+console.log("areThereDuplicates : " + areThereDuplicates(array1));
+console.log("areThereDuplicates : " + areThereDuplicates(array2));
+console.log("areThereDuplicates : " + areThereDuplicates(array3));
+console.log("areThereDuplicates : " + areThereDuplicates(array4));
