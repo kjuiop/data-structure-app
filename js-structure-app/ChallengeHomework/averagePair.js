@@ -38,10 +38,11 @@ function averagePair(arr, average) {
         let val = (arr[left] + arr[right]) / 2;
         if (val === average) {
             return true;
+        } else if (left < right) {
+            left++;
+        } else {
+            right--;
         }
-
-        left++;
-
     }
 
 
