@@ -36,19 +36,25 @@ function bubbleSort2(arr) {
 }
 
 function bubbleSort1(arr) {
-
+    let noSwap;
     for (let i=0; i<arr.length; i++) {
+        noSwap = true;
         for (let j=0; j<arr.length; j++) {
             console.log(arr, arr[j], arr[j+1]);
             if (arr[j] > arr[j+1]) {
                 let temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
+                noSwap = false;
             }
+        }
+
+        if (noSwap) {
+            break;
         }
     }
 
     return arr;
 }
 
-console.log("result : ", bubbleSort([37,45,29,8,22,22]));
+console.log("result : ", bubbleSort1([37,45,29,8,22,22]));
