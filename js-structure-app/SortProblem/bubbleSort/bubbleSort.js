@@ -6,14 +6,15 @@ function bubbleSort(arr) {
 
     for (let i=arr.length; i>0; i--) {
         for (let j=0; j<i-1; j++) {
-            console.log(arr, arr[j], arr[j+1]);
+            // console.log(arr, arr[j], arr[j+1]);
             if (arr[j] > arr[j+1]) {
                 swap(arr, j, j+1);
             }
         }
-        console.log("ONE PASS COMPLETE");
+        // console.log("ONE PASS COMPLETE");
     }
 
+    console.log("result : ", arr)
     return arr;
 }
 
@@ -57,4 +58,7 @@ function bubbleSort1(arr) {
     return arr;
 }
 
-console.log("result : ", bubbleSort1([37,45,29,8,22,22]));
+// console.log("result : ", bubbleSort1([37,45,29,8,22,22]));
+
+let data = Array.from({length: 100000}, () => Math.random());
+bubbleSort(data);
