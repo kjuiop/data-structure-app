@@ -5,7 +5,14 @@ class Student {
         this.lastName = lastName;
         this.year = year;
     }
+    fullName() {
+        return `Your full name is ${this.firstName} ${this.lastName}`;
+    }
 }
 
-console.log('result : ', new Student("Colt", "Steele", 23))
-console.log('result : ', new Student("Blue", "Steele", 25))
+let firstStudent = new Student("Colt", "Steele", 23);
+let secondStudent = new Student("Blue", "Steele", 25);
+
+console.log('result : ', firstStudent)
+console.log('result : ', secondStudent)
+console.log('result : ', secondStudent.fullName())
