@@ -8,6 +8,11 @@ class Student {
         this.scores = [];
     }
 
+    static EnrollStudents(...students) {
+        // maybe send an email here
+        return "ENROLLING STUDENT"
+    }
+
     fullName() {
         return `Your full name is ${this.firstName} ${this.lastName}`;
     }
@@ -50,3 +55,4 @@ console.log('result : ', secondStudent)
 console.log('result : ', secondStudent.fullName())
 console.log('result : ', firstStudent.markLate())
 console.log('result : ', secondStudent.calculateAverage())
+console.log('result : ', Student.EnrollStudents(firstStudent, secondStudent))
