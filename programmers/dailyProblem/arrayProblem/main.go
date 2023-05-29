@@ -19,8 +19,8 @@ func solution(array []int, commands [][]int) []int {
 
 	for _, val := range commands {
 
-		//copiedArray := make([]int, len(array))
-		//copy(copiedArray, array)
+		copiedArray := make([]int, len(array))
+		copy(copiedArray, array)
 
 		startIndex := val[0] - 1
 		endIndex := val[1]
