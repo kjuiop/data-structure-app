@@ -149,6 +149,23 @@ class BST {
         return data;
     }
 
+    DFSInOrder() {
+        let data = [];
+        let current = this.root;
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            data.push(node.value);
+            if (node.right) {
+                traverse(node.right);
+            }
+        }
+        traverse(current);
+
+        return data;
+    }
+
 
 }
 
@@ -163,3 +180,4 @@ tree.insert(7)
 console.log(tree.BFS())
 console.log(tree.DFSPreOrder())
 console.log(tree.DFSPostOrder())
+console.log(tree.DFSInOrder())
