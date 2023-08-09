@@ -20,6 +20,14 @@ class Graph {
             v => v !== vertex1
         );
     }
+    
+    removeVertex(vertex) {
+        while(this.adjacencyList[vertex].length) {
+            const adjacentVertex = this.adjacencyList[vertex].pop();
+            this.removeEdge(vertex, adjacentVertex);
+        }
+        delete this.adjacencyList[vertex];
+    }
 }
 
 let g = new Graph();
@@ -32,7 +40,7 @@ g.addEdge("Seoul", "Tokyo");
 
 console.log("result : ", g);
 
-g.removeEdge("Seoul", "Tokyo");
+g.removeVertex("Tokyo")
 
 console.log("result : ", g);
 
