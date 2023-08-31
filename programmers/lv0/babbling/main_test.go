@@ -38,3 +38,27 @@ func TestListenBabbling(t *testing.T) {
 		}
 	}
 }
+
+func TestSpeakWords(t *testing.T) {
+	baby := WakeUp()
+
+	tests := []struct {
+		babbling []string
+		expected int
+	}{
+		{[]string{"ayaye", "ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 4},
+		{[]string{"aya", "yee", "u", "maa", "wyeoo"}, 3},
+		{[]string{"ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 4},
+		{[]string{"aya", "ye", "woo", "ma"}, 4}, // Added a test case based on the provided Baby words
+		{[]string{}, 0},                         // Test for empty input
+		{[]string{"aaa", "bbb"}, 0},             // Test for words not in Baby's words
+		{[]string{"aya", "ye", "aaa"}, 2},       // Test for mixed words
+	}
+
+	for _, test := range tests {
+		result := baby.speakWords(test.babbling)
+		if result != test.expected {
+			t.Errorf("For babbling %v, expected %d, but got %d", test.babbling, test.expected, result)
+		}
+	}
+}
