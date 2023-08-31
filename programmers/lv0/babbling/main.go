@@ -56,8 +56,6 @@ func (b *Baby) speakWords(babbling []string) int {
 		babySpeakWords = append(babySpeakWords, babble)
 	}
 
-	fmt.Println("result : ", babySpeakWords)
-
 	return len(babySpeakWords)
 }
 
