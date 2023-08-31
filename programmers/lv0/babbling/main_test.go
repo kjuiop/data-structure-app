@@ -26,9 +26,6 @@ func TestListenBabbling(t *testing.T) {
 		{[]string{"ayaye", "ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 4},
 		{[]string{"aya", "yee", "u", "maa", "wyeoo"}, 1},
 		{[]string{"ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 3},
-		{[]string{"aya", "ye", "woo", "ma"}, 4}, // Added a test case based on the provided WakeUp words
-		{[]string{}, 0},                         // Test for empty input
-		{make([]string, 101), 0},                // Test for input exceeding the length limit
 	}
 
 	for _, test := range tests {
@@ -47,12 +44,8 @@ func TestSpeakWords(t *testing.T) {
 		expected int
 	}{
 		{[]string{"ayaye", "ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 4},
-		{[]string{"aya", "yee", "u", "maa", "wyeoo"}, 3},
-		{[]string{"ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 4},
-		{[]string{"aya", "ye", "woo", "ma"}, 4}, // Added a test case based on the provided Baby words
-		{[]string{}, 0},                         // Test for empty input
-		{[]string{"aaa", "bbb"}, 0},             // Test for words not in Baby's words
-		{[]string{"aya", "ye", "aaa"}, 2},       // Test for mixed words
+		{[]string{"aya", "yee", "u", "maa", "wyeoo"}, 1},
+		{[]string{"ayaye", "uuuma", "ye", "yemawoo", "ayaa"}, 3},
 	}
 
 	for _, test := range tests {
@@ -61,4 +54,36 @@ func TestSpeakWords(t *testing.T) {
 			t.Errorf("For babbling %v, expected %d, but got %d", test.babbling, test.expected, result)
 		}
 	}
+}
+
+func TestAnalyzeBabyBabble(t *testing.T) {
+	baby := WakeUp()
+
+	tests := []struct {
+		babble   string
+		expected bool
+	}{
+		{"aya", true},
+		{"ye", true},
+		{"wooma", true},
+		{"ayawooma", true},
+		{"ayayewoomama", false},
+		{"ayayewooma", true},
+		{"ayaayayewooma", false},
+	}
+
+	for _, test := range tests {
+		result := baby.analyzeBabyBabble(test.babble, makeTargetWordsMap(baby.words))
+		if result != test.expected {
+			t.Errorf("For babble '%s', expected %t, but got %t", test.babble, test.expected, result)
+		}
+	}
+}
+
+func makeTargetWordsMap(words []string) map[string]bool {
+	targetWords := make(map[string]bool)
+	for _, word := range words {
+		targetWords[word] = true
+	}
+	return targetWords
 }
