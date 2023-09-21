@@ -8,5 +8,21 @@ func main() {
 }
 
 func solution(nums []int) []int {
-	return nil
+
+	if len(nums) < 0 || len(nums) > 1000000 {
+		return nil
+	}
+
+	result := make([]int, 0)
+
+	for i := 0; i < len(nums); i++ {
+
+		if i > 0 && nums[i-1] == nums[i] {
+			continue
+		}
+
+		result = append(result, nums[i])
+	}
+
+	return result
 }
