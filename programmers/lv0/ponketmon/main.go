@@ -10,9 +10,6 @@ func main() {
 
 func solution(nums []int) int {
 
-	// 1. n/2 를 가져가도 된다고?
-	// 각 종류별로 포켓몬을 다양하게 가져갈 수 있는지에 대한 최대값
-
 	totalCnt := len(nums)
 	if totalCnt < 1 || totalCnt > 10000 {
 		return -1
@@ -24,11 +21,17 @@ func solution(nums []int) int {
 
 	pocketBox := make(map[int]bool)
 
-	for _, val := range nums {
+	for _, num := range nums {
+
+		if num < 1 || num > 200000 {
+			return -1
+		}
+
 		if len(pocketBox) >= totalCnt/2 {
 			break
 		}
-		pocketBox[val] = true
+
+		pocketBox[num] = true
 	}
 
 	return len(pocketBox)
